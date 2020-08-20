@@ -1,11 +1,11 @@
-<%= form_with(model: post, local: true) do |form| %>
+<%= form_with(model: @post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= @post.errors.count %> 件のエラーがあります。</h2>
 
       <ul>
-      <% post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
       <% end %>
       </ul>
     </div>
@@ -13,15 +13,16 @@
 
   <div class="field">
     <%= form.label :image %>
-    <%= form.file_field :image %>
+    <%= image_tag form.file_field :image %>
   </div>
 
   <div class="field">
     <%= form.label :content %>
-    <%= form.text_area :content %>
+    <%= form.text_field :content %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+<%= link_to '一覧に戻る', posts_path %>
