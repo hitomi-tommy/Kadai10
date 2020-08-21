@@ -49,6 +49,7 @@ class PostsController < ApplicationController
   end
   def confirm
     @post = Post.new(post_params)
+    biding.pry
     render :new if @post.invalid?
   end
 
