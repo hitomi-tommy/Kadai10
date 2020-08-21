@@ -1,0 +1,12 @@
+<h1>Sign up</h1>
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= f.label :メールアドレス %>
+  <%= f.email_field :email %>
+  <%= f.label :ユーザーネーム %>
+  <%= f.text_field :name %>
+  <%= f.label :パスワード %>
+  <%= f.password_field :password %>
+  <%= f.label :パスワード %>
+  <%= f.password_field :password_confirmation %>
+  <%= f.submit "Create my account" %>
+<% end %>
