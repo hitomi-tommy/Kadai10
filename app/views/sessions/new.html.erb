@@ -1,12 +1,8 @@
-<h1>Sign up</h1>
-<%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :メールアドレス %>
-  <%= f.email_field :email %>
-  <%= f.label :ユーザーネーム %>
-  <%= f.text_field :name %>
-  <%= f.label :パスワード %>
-  <%= f.password_field :password %>
-  <%= f.label :パスワード %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "Create my account" %>
+<h1>Log in</h1>
+<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+  <%= f.label :email %>
+  <%= f.email_field :email, :placeholder => "メールアドレス" %>
+  <%= f.label :password %>
+  <%= f.password_field :password, :placeholder => "パスワード" %>
+  <%= f.submit "ログイン", class:"btn btn-info" %>
 <% end %>

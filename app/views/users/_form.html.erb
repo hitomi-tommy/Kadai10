@@ -35,3 +35,16 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+<h1>Sign up</h1>
+<%= form_with(model: @user, local: true) do |f| %>
+  <%= f.label :メールアドレス %>
+  <%= f.email_field :email, :placeholder => "メールアドレス" %>
+  <%= f.label :ユーザーネーム %>
+  <%= f.text_field :name, :placeholder => "ユーザーネーム" %>
+  <%= f.label :パスワード %>
+  <%= f.password_field :password, :placeholder => "パスワード" %>
+  <%= f.label :パスワード %>
+  <%= f.password_field :password_confirmation, :placeholder => "パスワード（確認用)" %>
+  <%= f.submit "登録する",  class:"btn btn-info" %>
+<% end %>
