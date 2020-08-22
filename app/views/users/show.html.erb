@@ -1,9 +1,6 @@
 <div class="text-center">
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<p><%= @user.name %></p>
 
 <p>
   <strong>Email:</strong>
@@ -19,6 +16,3 @@
   <strong>User image:</strong>
   <%= @user.user_image %>
 </p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
