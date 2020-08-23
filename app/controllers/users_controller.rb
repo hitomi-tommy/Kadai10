@@ -10,6 +10,8 @@ class UsersController < ApplicationController
   end
   def edit
   end
+  def favorites
+  end
   def create
     @user = User.new(user_params)
     respond_to do |format|
