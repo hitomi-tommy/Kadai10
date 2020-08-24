@@ -1,5 +1,6 @@
 <h3>以下の内容で投稿する。</h3>
 <%= form_with(model: @post, url: posts_path, local: true ) do |form| %>
+  <%= form.hidden_field :content %>
   <%= image_tag(@post.image.url) if @post.image && @post.image.url %>
   <%= form.hidden_field :image_cache %>
   <p>本文:<%= @post.content %></p>
