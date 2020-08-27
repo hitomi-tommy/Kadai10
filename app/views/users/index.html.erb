@@ -7,7 +7,7 @@
 <% @users.each do |user| %>
   <tr>
     <td><%= user.name %></td>
-    <td><%= image_tag user.user_image.url %></td>
+    <td><%= image_tag user.user_image.url if user.user_image.present? %></td>
 
     <td><%= link_to 'Show', user_path(user.id) %></td>
     <td><%= link_to 'Edit', edit_user_path(user.id) if current_user.id == user.id %></td>
