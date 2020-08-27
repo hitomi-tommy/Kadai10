@@ -1,3 +1,21 @@
-<% @user.favorite_posts.each do |post| %>
-  
-<% end %>
+<h1>お気に入り一覧 </h1>
+  <% @favorites.each do |favorite| %>
+      <div class ="favorites">
+        <table>
+          <tr>
+            <td>
+            <%= link_to post_path(favorite) do%>
+              <%= image_tag favorite.post.image.url size: '200*200' %>
+            <% end %>
+            </td>
+          <br>
+          <tr>
+            <td>
+              <p><%= favorite.post.content %></p>
+            </td>
+          </tr>
+          <br>
+        </table>
+      </div>
+  <% end %>
+  <p><%= link_to "投稿一覧に戻る", posts_path %></p>

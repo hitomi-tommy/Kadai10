@@ -1,50 +1,25 @@
-<%= form_with(model: @user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-      <ul>
-      <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :メールアドレス %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :ユーザーネーム %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :パスワード %>
-    <%= form.text_field :password_digest %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_image %>
-    <%= form.text_area :user_image %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= @user.errors.count %> 件のエラーがあります。</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
 
-<h1>Sign up</h1>
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :メールアドレス %>
-  <%= f.email_field :email, :placeholder => "メールアドレス" %>
-  <%= f.label :ユーザーネーム %>
-  <%= f.text_field :name, :placeholder => "ユーザーネーム" %>
-  <%= f.label :パスワード %>
-  <%= f.password_field :password, :placeholder => "パスワード" %>
-  <%= f.label :パスワード %>
-  <%= f.password_field :password_confirmation, :placeholder => "パスワード（確認用)" %>
-  <%= f.submit "登録する",  class:"btn btn-info" %>
+  <%= f.label :name,"ユーザー名" %>
+  <%= f.text_field :name, placeholder:"姓名" %>
+  <%= f.label :email,"メールアドレス"%>
+  <%= f.email_field :email, placeholder:"メールアドレス" %>
+  <%= f.label :password, "パスワード設定" %>
+  <%= f.password_field :password,placeholder:"6文字以上" %>
+  <%= f.label :password_confirmation, "パスワード再入力" %>
+  <%= f.password_field :password_confirmation, placeholder:"6文字以上" %>
+  <%= f.label :ユーザー画像 %>
+  <%= f.file_field :user_image %>
+  <br/>
+  <%= f.submit "登録する" %>
 <% end %>

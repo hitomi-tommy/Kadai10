@@ -1,13 +1,22 @@
-<div class="text-center">
-<p><%= @user.name %></p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>User image:</strong>
-  <%= @user.user_image %>
-</p>
-<%= link_to 'Show', posts_path %> 
+<div class = "user_profile">
+  <div class="user_profile_upper">
+    <% if logged_in? %>
+      <p>ユーザー名: <%= @user.name %></p>
+      <p>メールアドレス: <%= @user.email %></p>
+      <p>ユーザー画像</p>
+      <div class="user_profile_image">
+       <%= image_tag @user.user_image.url if @user.user_image.url.present? %>
+    <% else %>
+      <div class="user_profile_lower">
+        <h1>ユーザー：<%= @user.name %>を登録しました。</h1>
+        <h2><%= link_to "ログイン", new_session_path %>してください</h2>
+      </div>
+    <% end %>
+  </div>
+    <div class="user_profile_menu">
+         <p><%= link_to "プロフィールを編集する", edit_user_path(@user.id)%> </p>
+         <p><%= link_to '投稿一覧へ', posts_path %></p>
+         <p><%= link_to 'お気に入り一覧', "/users/#{@user.id}/favorites" %></p>
+    </div>
+  </div>
+</div>
