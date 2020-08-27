@@ -15,7 +15,8 @@
     <% end %>
     <% if logged_in? %>
       <%= link_to "プロフィール", user_path(current_user.id) %>
-      <%= link_to "投稿一覧", posts_path(current_user.id) %>
+      <%= link_to "投稿一覧", posts_path %>
+      <%= link_to "ユーザー一覧", users_path(@user) %>
       <%= link_to "ログアウト", session_path(current_user.id), method: :delete %>
     <% else %>
       <%= link_to "サインアップ", new_user_path %>
