@@ -31,7 +31,7 @@ class PostsController < ApplicationController
     else
      respond_to do |format|
         if @post.save
-          # ContactMailer.contact_mail(@post).deliver
+          ContactMailer.contact_mail(@post).deliver
           format.html { redirect_to @post, notice: '新規投稿しました！' }
           format.json { render :show, status: :created, location: @post }
         else
