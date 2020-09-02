@@ -4,6 +4,6 @@
   <%= form.hidden_field :image_cache %>
   <%= form.hidden_field :content %>
   <p><%= @post.content %></p>
-  <div class="confirm_btn_field"><%= form.submit "登録", class: "confirm_btn" %></div>
-  <div class="confirm_btn_field"><%= form.submit "戻る", name: "back", class: "confirm_btn" %></div>
+  <div><%= form.submit "登録" %></div>
+  <div><%= form.submit "戻る", name: "back" %></div>
 <% end %>

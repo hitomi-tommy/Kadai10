@@ -26,14 +26,18 @@ class PostsController < ApplicationController
 
   def create
    @post = current_user.posts.build(post_params)
-   respond_to do |format|
-      if @post.save
-        # ContactMailer.contact_mail(@post).deliver
-        format.html { redirect_to @post, notice: '新規投稿しました！' }
-        format.json { render :show, status: :created, location: @post }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+    if params[:back]
+      render :new
+    else
+     respond_to do |format|
+        if @post.save
+          # ContactMailer.contact_mail(@post).deliver
+          format.html { redirect_to @post, notice: '新規投稿しました！' }
+          format.json { render :show, status: :created, location: @post }
+        else
+          format.html { render :new }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -41,7 +45,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: '編集しました！' }
+        format.html { redirect_to @post , notice: '編集しました！' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -53,12 +57,14 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: '削除しました' }
+      format.html { redirect_to posts_url , notice: '削除しました!' }
       format.json { head :no_content }
     end
   end
+  
   def confirm
-    @post = current_user.posts.build(post_params)
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
     render :new if @post.invalid?
   end
 

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :posts do
     collection do
       post :confirm
-      patch :update
+      # patch :update
     end
   end
   get 'sessions/new'
