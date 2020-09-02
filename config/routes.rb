@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   get 'users/:id/favorites', to: 'users#favorites'
   resources :sessions, only: [:new, :create, :destroy]
   resources :favorites, only: [:create, :destroy]
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  config.action_mailer.default_url_options = { host: 'vast-ridge-19391.herokuapp.com'}
+  config.action_mailer.delivery_method = :letter_opener_web
 end
