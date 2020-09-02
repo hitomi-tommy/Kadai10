@@ -13,5 +13,12 @@
  *= require_tree .
  *= require_self
  */
- body {
+body {
    background-color: #FAFAFA;
+}
+.wrapper{
+  text-align: center;
+}
+.content-wrapper{
+  text-align: -webkit-center;
+}
