@@ -19,6 +19,8 @@ Rails.application.configure do
   # config.require_master_key = true
 
   config.action_mailer.default_url_options = { host: 'vast-ridge-19391.herokuapp.com' }
+  config.action_mailer.delivery_method = :letter_opener_web
+  
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     user_name: ENV['SENDGRID_USERNAME'],
